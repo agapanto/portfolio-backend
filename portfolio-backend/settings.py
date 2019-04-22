@@ -127,3 +127,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# REST FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_auth0.authentication.Auth0JSONWebTokenAuthentication',
+    ),
+}
+
+# AUTH0
+AUTH0 = {
+  'CLIENTS': {
+      'default': {
+          'AUTH0_CLIENT_ID': os.environ.get('AUTH0_CLIENT_ID'),
+          'AUTH0_CLIENT_SECRET': os.environ.get('AUTH0_CLIENT_SECRET'),
+          'CLIENT_SECRET_BASE64_ENCODED': eval(os.environ.get('AUTH0_CLIENT_SECRET_BASE64_ENCODED', 'False')),
+      }
+  },
+  'AUTH0_ALGORITHM': 'HS256',
+  'JWT_AUTH_HEADER_PREFIX': 'JWT',
+  'AUTHORIZATION_EXTENSION': False,
+  'REPLACE_PIPE_FOR_DOTS_IN_USERNAME': False,
+  'USERNAME_FIELD': 'sub',
+}
