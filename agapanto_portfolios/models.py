@@ -66,7 +66,7 @@ class Portfolio(InstanceStatusModelMixin,
         pass
 
     def __str__(self):
-        return self.unique_id
+        return self.name
 
 
 class PortfolioItem(InstanceStatusModelMixin,
@@ -96,4 +96,4 @@ class PortfolioItem(InstanceStatusModelMixin,
         pass
 
     def __str__(self):
-        return self.unique_id
+        return self.name
