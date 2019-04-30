@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'rest_framework',
     # Security & multi-app management
     # 'rest_framework_apicontrol',
     'rest_framework_jwt',
