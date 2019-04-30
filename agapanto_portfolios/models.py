@@ -47,11 +47,13 @@ class Portfolio(InstanceStatusModelMixin,
     )
     read_access = models.CharField(
         max_length=STATUS_FIELD_MAX_LENGTH,
-        choices=PORTFOLIO_READ_ACCESS_CHOICES
+        choices=PORTFOLIO_READ_ACCESS_CHOICES,
+        default='group'
     )
     write_access = models.CharField(
         max_length=STATUS_FIELD_MAX_LENGTH,
-        choices=PORTFOLIO_WRITE_ACCESS_CHOICES
+        choices=PORTFOLIO_WRITE_ACCESS_CHOICES,
+        default='group'
     )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
