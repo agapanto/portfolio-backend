@@ -44,6 +44,7 @@ class Portfolio(InstanceStatusModelMixin,
     current_status = models.CharField(
         max_length=STATUS_FIELD_MAX_LENGTH,
         choices=PORTFOLIO_STATUS_CHOICES,
+        default='unpublished'
     )
     read_access = models.CharField(
         max_length=STATUS_FIELD_MAX_LENGTH,
