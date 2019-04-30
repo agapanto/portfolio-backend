@@ -9,14 +9,28 @@ Function views
 Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from .viewsets import (
+    PortfolioViewSet,
+    PortfolioItemViewSet,
+)
+
+router = DefaultRouter()
+router.register(
+    r'portfolios',
+    PortfolioViewSet,
+    basename='portfolio'
+)
+router.register(
+    r'portfolioitems',
+    PortfolioItemViewSet,
+    basename='portfolio_item'
+)
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('portfolios/', include('agapanto_portfolios.urls')),
+    path('api/', include((router.urls, 'agapanto_portfolios'))),
 ]
