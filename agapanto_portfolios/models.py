@@ -14,7 +14,7 @@ from rest_framework_apicontrol.mixins import (
 )
 
 PORTFOLIO_STATUS_CHOICES = (
-    ('hidden', 'hidden'),
+    ('unpublished', 'unpublished'),
     ('published', 'published'),
 )
 
