@@ -59,6 +59,7 @@ class Portfolio(InstanceStatusModelMixin,
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        related_name='portfolios'
     )
 
     class Meta:
@@ -82,7 +83,8 @@ class PortfolioItem(InstanceStatusModelMixin,
     )
     portfolio = models.ForeignKey(
         Portfolio,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='items'
     )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
