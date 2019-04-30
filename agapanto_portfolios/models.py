@@ -63,3 +63,31 @@ class Portfolio(InstanceStatusModelMixin,
 
     def __str__(self):
         return self.unique_id
+
+
+class PortfolioItem(InstanceStatusModelMixin,
+                    TrackableModelMixin,
+                    UniqueIDModelMixin):
+    """PortfolioItem: an item inside a portfolio."""
+
+    name = models.TextField()
+    description = models.TextField()
+    image = models.ImageField()
+    current_status = models.CharField(
+        max_length=STATUS_FIELD_MAX_LENGTH,
+        choices=PORTFOLIO_STATUS_CHOICES,
+    )
+    portfolio = models.ForeignKey(
+        Portfolio,
+        on_delete=models.CASCADE
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+
+    class Meta:
+        pass
+
+    def __str__(self):
+        return self.unique_id
