@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     # Security & multi-app management
-    # 'rest_framework_apicontrol',
+    'rest_framework_apicontrol',
     'rest_framework_jwt',
     'rest_framework_auth0',
     # Project specific apps
