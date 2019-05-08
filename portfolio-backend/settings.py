@@ -147,6 +147,9 @@ REST_FRAMEWORK = {
         # Rest Framework tokens for API Request(e.g.: Website integration )
         'rest_framework.authentication.TokenAuthentication',
     ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
 
 # AUTH0
