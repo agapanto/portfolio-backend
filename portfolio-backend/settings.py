@@ -142,7 +142,10 @@ STATIC_URL = '/static/'
 # REST FRAMEWORK
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        # AUTH0 for users request(through Client apps)
         'rest_framework_auth0.authentication.Auth0JSONWebTokenAuthentication',
+        # Rest Framework tokens for API Request(e.g.: Website integration )
+        'rest_framework.authentication.TokenAuthentication',
     ),
 }
 
