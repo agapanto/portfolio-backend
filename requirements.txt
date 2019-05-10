@@ -1,7 +1,7 @@
 boto3==1.9.145
 Django==2.2
 django-extensions==2.1.6
-django-storages==1.7.1
+git+https://github.com/mcueto/django-storages
 djangorestframework==3.9.2
 djangorestframework-jwt==1.11.0
 gunicorn==19.9.0
