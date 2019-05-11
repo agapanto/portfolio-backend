@@ -139,6 +139,54 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
+# Definitive configuration
+DO_SPACES_ACCESS_KEY_ID = os.environ.get(
+    'DO_SPACES_ACCESS_KEY_ID'
+)
+DO_SPACES_SECRET_ACCESS_KEY = os.environ.get(
+    'DO_SPACES_SECRET_ACCESS_KEY'
+)
+DO_SPACES_SPACE_NAME = os.environ.get(
+    'DO_SPACES_SPACE_NAME'
+)
+DO_SPACES_SPACE_FOLDER = os.environ.get(
+    'DO_SPACES_SPACE_FOLDER'
+)
+DO_SPACES_ENDPOINT_URL = os.environ.get(
+    'DO_SPACES_ENDPOINT_URL'
+)
+DO_SPACES_CACHE_MAX_AGE = int(
+    os.environ.get(
+        'DO_SPACES_CACHE_MAX_AGE'
+    )
+)
+DO_SPACES_DEFAULT_ACL = os.environ.get(
+    'DO_SPACES_DEFAULT_ACL'
+)
+
+# Set File locations
+DO_SPACES_STATIC_LOCATION = '{FOLDER}/static'.format(
+    FOLDER=DO_SPACES_SPACE_FOLDER
+)
+DO_SPACES_PUBLIC_MEDIA_LOCATION = '{FOLDER}/media/public'.format(
+    FOLDER=DO_SPACES_SPACE_FOLDER
+)
+DO_SPACES_PRIVATE_MEDIA_LOCATION = '{FOLDER}/media/private'.format(
+    FOLDER=DO_SPACES_SPACE_FOLDER
+)
+
+#  Static files config
+STATIC_URL = 'https://{ENDPOINT_URL}/{STATIC_LOCATION}/'.format(
+    ENDPOINT_URL=DO_SPACES_ENDPOINT_URL,
+    STATIC_LOCATION=DO_SPACES_STATIC_LOCATION
+)
+
+# Configure file storage settings
+STATICFILES_STORAGE = 'storages.backends.do_spaces.DigitalOceanSpacesStaticStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.do_spaces.DigitalOceanSpacesPublicMediaStorage'
+PRIVATE_FILE_STORAGE = 'storages.backends.do_spaces.DigitalOceanSpacesPrivateMediaStorage'
+
+
 # REST FRAMEWORK
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
