@@ -160,9 +160,19 @@ DO_SPACES_CACHE_MAX_AGE = int(
         'DO_SPACES_CACHE_MAX_AGE'
     )
 )
-DO_SPACES_DEFAULT_ACL = os.environ.get(
-    'DO_SPACES_DEFAULT_ACL'
-)
+DO_SPACES_DEFAULT_ACL = None
+
+# Get DEFAULT_ACL from env vars
+try:
+    DEFAULT_ACL = os.environ.get(
+        'DO_SPACES_DEFAULT_ACL'
+    )
+
+    if DEFAULT_ACL != 'None':
+        DO_SPACES_DEFAULT_ACL = DEFAULT_ACL
+
+except Exception as e:
+    pass
 
 # Set File locations
 DO_SPACES_STATIC_LOCATION = '{FOLDER}/static'.format(
