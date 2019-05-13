@@ -40,7 +40,10 @@ class Portfolio(InstanceStatusModelMixin,
         max_length=64
     )
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(
+        blank=True,
+        null=True
+    )
     current_status = models.CharField(
         max_length=STATUS_FIELD_MAX_LENGTH,
         choices=PORTFOLIO_STATUS_CHOICES,
