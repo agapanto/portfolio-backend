@@ -248,7 +248,7 @@ CORS_ORIGIN_WHITELIST = (
         ),
         WEBSITE_PORT=os.environ.get(
             'WEBSITE_PORT',
-            '8080'
+            ''
         ),
     ).rstrip(':')
 )
