@@ -83,6 +83,10 @@ class PortfolioItem(InstanceStatusModelMixin,
         blank=True,
         null=True
     )
+    url = models.URLField(
+        blank=True,
+        null=True
+    )
     current_status = models.CharField(
         max_length=STATUS_FIELD_MAX_LENGTH,
         choices=PORTFOLIO_STATUS_CHOICES,

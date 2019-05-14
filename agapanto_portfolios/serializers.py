@@ -28,6 +28,7 @@ class PortfolioItemSerializer(serializers.ModelSerializer):
             'name',
             'description',
             'image',
+            'url',
             'current_status',
             'portfolio',
             # 'user'
