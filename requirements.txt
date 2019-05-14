@@ -2,7 +2,7 @@ boto3==1.9.145
 Django==2.2
 django-cors-headers==3.0.0
 django-extensions==2.1.6
-git+https://github.com/mcueto/django-storages
+django-filter==2.1.0
 djangorestframework==3.9.2
 djangorestframework-jwt==1.11.0
 gunicorn==19.9.0
