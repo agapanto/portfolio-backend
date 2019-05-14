@@ -29,7 +29,13 @@ DEBUG = eval(
 )
 
 ALLOWED_HOSTS = [
-    os.environ.get('APP_HOST')
+    os.environ.get(
+        'APP_HOST'
+    ),
+    os.environ.get(
+        'WEBSITE_HOST',
+        '127.0.0.1'
+    ),
 ]
 
 
@@ -57,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -225,3 +232,23 @@ AUTH0 = {
   'REPLACE_PIPE_FOR_DOTS_IN_USERNAME': True,
   'USERNAME_FIELD': 'sub',
 }
+
+CORS_ORIGIN_ALLOW_ALL = eval(
+    os.environ.get(
+        'CORS_ORIGIN_ALLOW_ALL',
+        'False',
+    )
+)
+
+CORS_ORIGIN_WHITELIST = (
+    '{WEBSITE_HOST}:{WEBSITE_PORT}'.format(
+        WEBSITE_HOST=os.environ.get(
+            'WEBSITE_HOST',
+            '127.0.0.1'
+        ),
+        WEBSITE_PORT=os.environ.get(
+            'WEBSITE_PORT',
+            '8080'
+        ),
+    ).rstrip(':')
+)
