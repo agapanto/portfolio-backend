@@ -246,7 +246,7 @@ CORS_ORIGIN_ALLOW_ALL = eval(
     )
 )
 
-CORS_ORIGIN_WHITELIST = (
+CORS_ORIGIN_WHITELIST = [
     '{WEBSITE_HOST}:{WEBSITE_PORT}'.format(
         WEBSITE_HOST=os.environ.get(
             'WEBSITE_HOST',
@@ -257,4 +257,4 @@ CORS_ORIGIN_WHITELIST = (
             ''
         ),
     ).rstrip(':')
-)
+]
