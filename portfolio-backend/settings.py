@@ -247,7 +247,11 @@ CORS_ORIGIN_ALLOW_ALL = eval(
 )
 
 CORS_ORIGIN_WHITELIST = [
-    '{WEBSITE_HOST}:{WEBSITE_PORT}'.format(
+    '{WEBSITE_PROTOCOL}://{WEBSITE_HOST}:{WEBSITE_PORT}'.format(
+        WEBSITE_PROTOCOL=os.environ.get(
+            'WEBSITE_PROTOCOL',
+            'http'
+        ),
         WEBSITE_HOST=os.environ.get(
             'WEBSITE_HOST',
             '127.0.0.1'
