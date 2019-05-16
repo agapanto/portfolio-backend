@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'corsheaders',
     # Security & multi-app management
     'rest_framework_apicontrol',
     'rest_framework_jwt',
