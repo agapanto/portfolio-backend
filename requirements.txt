@@ -1,5 +1,5 @@
 boto3==1.9.145
-Django==2.2
+Django==2.2.13
 django-cors-headers==3.0.0
 django-extensions==2.1.6
 git+https://github.com/mcueto/django-storages
