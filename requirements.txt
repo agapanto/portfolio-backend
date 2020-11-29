@@ -1,7 +1,7 @@
 boto3==1.9.145
 Django==2.2.13
 django-cors-headers==3.0.0
-django-extensions==2.1.6
+django-extensions==3.1.0
 git+https://github.com/mcueto/django-storages
 django-filter==2.1.0
 djangorestframework==3.9.2
@@ -11,7 +11,7 @@ honcho==1.0.1
 Pillow==7.1.0
 psycopg2-binary==2.8.2
 PyJWT==1.7.1
-pytz==2019.1
+pytz==2020.4
 rest-framework-apicontrol==0.7.7
 rest-framework-auth0==0.5.3
 six==1.12.0
