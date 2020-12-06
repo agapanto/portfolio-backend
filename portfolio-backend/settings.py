@@ -269,3 +269,8 @@ CORS_ORIGIN_WHITELIST = [
         ),
     ).rstrip(':')
 ]
+
+# GraphQL config
+GRAPHENE = {
+    "SCHEMA": "portfolio-backend.schema.schema"
+}
