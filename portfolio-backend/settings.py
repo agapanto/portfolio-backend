@@ -51,12 +51,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', # Required for GraphiQL
     'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
     'corsheaders',
+    "graphene_django",
     # Security & multi-app management
     'rest_framework_apicontrol',
     'rest_framework_jwt',
