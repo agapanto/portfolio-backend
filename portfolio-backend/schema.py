@@ -1,13 +1,14 @@
 # cookbook/schema.py
 import graphene
 from graphene_django import DjangoObjectType
+from graphene_django.filter import DjangoFilterConnectionField
 from agapanto_portfolios.models import (
     Portfolio,
     PortfolioItem,
 )
 
 
-class PortfolioType(DjangoObjectType):
+class PortfolioNode(DjangoObjectType):
     class Meta:
         model = Portfolio
         fields = (
@@ -18,8 +19,16 @@ class PortfolioType(DjangoObjectType):
             "current_status",
             "user"
         )
+        filter_fields = [
+            'name',
+            'current_status',
+            'user'
+        ]
+        interfaces = (
+            graphene.relay.Node,
+        )
 
-class PortfolioItemType(DjangoObjectType):
+class PortfolioItemNode(DjangoObjectType):
     class Meta:
         model = PortfolioItem
         fields = (
@@ -32,18 +41,23 @@ class PortfolioItemType(DjangoObjectType):
             "portfolio",
             "user"
         )
+        filter_fields = [
+            'name',
+            'current_status',
+            'portfolio',
+            'user'
+        ]
+        interfaces = (
+            graphene.relay.Node,
+        )
 
 
 class Query(graphene.ObjectType):
-    all_portfolios = graphene.List(PortfolioType)
-    all_portfolio_items = graphene.List(PortfolioItemType)
+    portfolio = graphene.relay.Node.Field(PortfolioNode)
+    all_portfolios = DjangoFilterConnectionField(PortfolioNode)
 
-    def resolve_all_portfolios(root, info):
-        return Portfolio.objects.all()
-
-    def resolve_all_portfolio_items(root, info):
-        # We can easily optimize query count in the resolve method
-        return PortfolioItem.objects.select_related("portfolio").all()
+    portfolio_item = graphene.relay.Node.Field(PortfolioItemNode)
+    all_portfolio_items = DjangoFilterConnectionField(PortfolioItemNode)
 
 schema = graphene.Schema(
     query=Query
