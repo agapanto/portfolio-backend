@@ -206,9 +206,9 @@ STATIC_URL = 'https://{ENDPOINT_URL}/{STATIC_LOCATION}/'.format(
 )
 
 # Configure file storage settings
-STATICFILES_STORAGE = 'storages.backends.do_spaces.DigitalOceanSpacesStaticStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.do_spaces.DigitalOceanSpacesPublicMediaStorage'
-PRIVATE_FILE_STORAGE = 'storages.backends.do_spaces.DigitalOceanSpacesPrivateMediaStorage'
+STATICFILES_STORAGE = 'storages-dospaces.backends.do_spaces.DigitalOceanSpacesStaticStorage'
+DEFAULT_FILE_STORAGE = 'storages-dospaces.backends.do_spaces.DigitalOceanSpacesPublicMediaStorage'
+PRIVATE_FILE_STORAGE = 'storages-dospaces.backends.do_spaces.DigitalOceanSpacesPrivateMediaStorage'
 
 
 # REST FRAMEWORK
