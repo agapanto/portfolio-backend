@@ -9,6 +9,8 @@ from agapanto_portfolios.models import (
 
 
 class PortfolioNode(DjangoObjectType):
+    image = graphene.String()
+
     class Meta:
         model = Portfolio
         fields = (
@@ -28,7 +30,16 @@ class PortfolioNode(DjangoObjectType):
             graphene.relay.Node,
         )
 
+    def resolve_image(self, info):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return ""
+
 class PortfolioItemNode(DjangoObjectType):
+    # https://docs.graphene-python.org/projects/django/en/latest/queries/#default-queryset
+    image = graphene.String()
+
     class Meta:
         model = PortfolioItem
         fields = (
@@ -51,6 +62,11 @@ class PortfolioItemNode(DjangoObjectType):
             graphene.relay.Node,
         )
 
+    def resolve_image(self, info):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return ""
 
 class Query(graphene.ObjectType):
     portfolio = graphene.relay.Node.Field(PortfolioNode)
