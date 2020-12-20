@@ -16,6 +16,7 @@ from rest_framework_apicontrol.mixins import (
 PORTFOLIO_STATUS_CHOICES = (
     ('unpublished', 'unpublished'),
     ('published', 'published'),
+    ('archived', 'archived'),
 )
 
 PORTFOLIO_READ_ACCESS_CHOICES = (
