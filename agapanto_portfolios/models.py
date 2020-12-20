@@ -30,7 +30,6 @@ PORTFOLIO_WRITE_ACCESS_CHOICES = (
     ('owner', 'owner'),
     ('group', 'group'),
     ('authenticated', 'authenticated'),
-    ('public', 'public'),
 )
 
 
