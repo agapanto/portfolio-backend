@@ -22,12 +22,14 @@ PORTFOLIO_STATUS_CHOICES = (
 PORTFOLIO_READ_ACCESS_CHOICES = (
     ('owner', 'owner'),
     ('group', 'group'),
+    ('authenticated', 'authenticated'),
     ('public', 'public'),
 )
 
 PORTFOLIO_WRITE_ACCESS_CHOICES = (
     ('owner', 'owner'),
     ('group', 'group'),
+    ('authenticated', 'authenticated'),
     ('public', 'public'),
 )
 
