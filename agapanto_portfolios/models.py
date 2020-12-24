@@ -1,7 +1,10 @@
 """agapanto_portfolios models."""
 # import uuid
+import datetime
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 # from django.contrib.postgres.fields import JSONField
 from rest_framework_apicontrol.mixins import (
     STATUS_FIELD_MAX_LENGTH,
@@ -109,3 +112,11 @@ class PortfolioItem(InstanceStatusModelMixin,
 
     def __str__(self):
         return self.name
+
+
+# NOTE: you could move this code to signals.py and it still work the same
+# Pretty straightforward receiver, just updates your updated_at field.
+@receiver(pre_save, sender=Portfolio)
+@receiver(pre_save, sender=PortfolioItem)
+def update_updated_at_when_saving(sender, instance, **kwargs):
+    instance.updated_at = datetime.datetime.now()
