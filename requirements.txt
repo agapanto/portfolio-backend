@@ -23,6 +23,6 @@ rest-framework-apicontrol==0.7.7
 rest-framework-auth0==0.5.3
 s3transfer==0.2.1
 six==1.15.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 urllib3==1.25.11
 whitenoise==5.2.0
